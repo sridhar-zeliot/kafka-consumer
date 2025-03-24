@@ -32,7 +32,7 @@ const consumeMessages = async () => {
             eachMessage: async ({ topic, partition, message }) => {
                 try {
                     const value = message.value.toString();
-                    console.log(`📥 Consumed Message:`, value);
+                    // console.log(`📥 Consumed Message:`, value);
 
                     // Directly publishing the consumed message without any condition
                     await producer.send({
