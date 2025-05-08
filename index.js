@@ -3,15 +3,15 @@ const { Kafka, Partitioners } = require('kafkajs');
 
 const inputTopic = process.env.KAFKA_INPUT_TOPIC;
 const outputTopic = process.env.KAFKA_OUTPUT_TOPIC;
-const kafkaBroker = process.env.KAFKA_BROKER; // Get broker from env variable
+const kafkaBroker = process.env.KAFKA_BROKER || 'my-cluster-kafka-bootstrap.kafka.svc:9092';
 
 const kafka = new Kafka({
     clientId: 'json-consumer',
     brokers: [kafkaBroker],
     sasl: {
         mechanism: "scram-sha-512",
-        username: process.env.KAFKA_USERNAME,
-        password: process.env.KAFKA_PASSWORD,
+        username: process.env.KAFKA_USERNAME || 'qhvrvf2iah45c6yolh4yk3qrb',
+        password: process.env.KAFKA_PASSWORD || 'B2GnMMhArGszooFsmbq3AjRyG6mY8iRj',
     },
 });
 
