@@ -16,7 +16,10 @@ const kafka = new Kafka({
 });
 
 // Dynamic groupId (new group on each run)
-const consumer = kafka.consumer({ groupId: `data-processing-group-${Date.now()}` });
+// const consumer = kafka.consumer({ groupId: `data-processing-group-${Date.now()}` });
+//constant groupID
+const consumer = kafka.consumer({ groupId: 'data-processing-group' });
+
 
 const producer = kafka.producer({
     createPartitioner: Partitioners.LegacyPartitioner // Fix KafkaJS partitioner warning
