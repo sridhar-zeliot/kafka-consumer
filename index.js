@@ -6,7 +6,9 @@ const outputTopic = process.env.KAFKA_OUTPUT_TOPIC;
 const kafkaBroker = process.env.KAFKA_BROKER || 'my-cluster-kafka-bootstrap.kafka.svc:9092';
 
 const kafka = new Kafka({
-    clientId: 'json-consumer',
+    // clientId: 'json-consumer',
+    clientId: process.env.KAFKA_CLIENT_ID || `json-consumer-${Date.now()}`,
+
     brokers: [kafkaBroker],
     sasl: {
         mechanism: "scram-sha-512",
